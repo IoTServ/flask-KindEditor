@@ -1,5 +1,6 @@
 from werkzeug.utils import secure_filename
-from flask import render_template, request
+from flask import Flask,render_template, request
+app=Flask(__name__)
 app.route('/upload', methods=['POST'])
 def upload():
     dict_tmp = {}
@@ -35,3 +36,5 @@ def upload():
     dict_tmp['error'] = 0  # 成功{ "error":0, "url": "/static/image/filename"}
     dict_tmp['url'] = "/static/up/" + fname
     return json.dumps(dict_tmp)
+if __name__='__main__':
+    app.run()
